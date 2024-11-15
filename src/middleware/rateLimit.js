@@ -12,15 +12,15 @@ const msglimiter = rateLimit({
     handler: function (req, res) {
     // Custom message on exceeding the limit
     res.status(this.statusCode).send(this.message);
-    console.log(this.message);
+    console.log(`Rate limit exceeded for ${req.ip}`);
   }
   });
 
 
   // for lobby create, delete, user delete, etc.
   const standardlimiter = rateLimit({
-    windowMs: 5 * 60 * 1000,  // 5 minute window
-    max: 10,          // Allow only 5 requests per second
+    windowMs: 1 * 60 * 1000,  // 5 minute window
+    max: 5,          // Allow only 5 requests per second
     message: 'Too many standard requests, please try again later.', // Custom message when rate limit is exceeded
     statusCode: 429,  // Status code for rate limit exceeded
     keyGenerator: function (req) {
@@ -29,7 +29,7 @@ const msglimiter = rateLimit({
     handler: function (req, res) {
     // Custom message on exceeding the limit
     res.status(this.statusCode).send(this.message);
-    console.log(this.message);
+    console.log(`Rate limit exceeded for ${req.ip}`);
   }
   });
 
