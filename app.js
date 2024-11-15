@@ -23,6 +23,9 @@ const corsOptions = {
     credentials: true,
 };
 
+// Trust the proxy for accurate IP tracking
+app.set('trust proxy', true);
+
 //sets and use 
 app.set('view engine', 'ejs')
 app.set('views', './src/views')
