@@ -8,8 +8,9 @@ const createLobby = async (req, res) => {
         const generated_code = await generateCode()
         const lobbyCode = await firestoreServices.createLobby(generated_code)
 
-        res.status(200).json({"code" : lobbyCode})
         console.log(`Request from IP from create lobby: ${req.ip}`);
+        res.status(200).json({"code" : lobbyCode})
+        
                 
     } catch (error) {
         console.error(`Error during api call: /firestore/createLobby: ${error.message}`)
